@@ -3,7 +3,8 @@ source 'http://rubygems.org'
 gem 'rails'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
-ruby '1.9.3'
+# ruby '1.9.3'
+gem 'rails', '3.2.7' 
 
 gem "mongoid", "~> 3.0.0"
 
@@ -26,7 +27,7 @@ gem 'rabl'
 
 group :assets do
   gem 'sass-rails'
-  gem 'coffee-rails'
+  # gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platform => :ruby
