@@ -1,0 +1,1 @@
+RACK_ENV=development PORT=5000 foreman start
