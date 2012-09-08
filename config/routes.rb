@@ -1,4 +1,6 @@
 XnotY::Application.routes.draw do
+  resources :users
+
   resources :events
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
