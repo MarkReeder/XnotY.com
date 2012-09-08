@@ -2,28 +2,47 @@ source 'http://rubygems.org'
 
 gem 'rails'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3-ruby', :require => 'sqlite3'
+ruby '1.9.3'
 
-# Use unicorn as the web server
-# gem 'unicorn'
+gem "mongoid", "~> 3.0.0"
 
-# Deploy with Capistrano
-# gem 'capistrano'
+# http://haml-lang.com/
+gem 'haml'
+gem 'haml-rails'
 
-# To use debugger
-# gem 'ruby-debug'
+gem 'andand'
 
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri', '1.4.1'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
+# the rails webserver. Using this rather than passenger or others because Heroku suggests it 
+# (and presumably it's what they best support).
+gem 'thin'
 
-# Bundle gems for certain environments:
-# gem 'rspec', :group => :test
-# group :test do
-#   gem 'webrat'
-# end
+# https://github.com/nov/fb_graph
+gem 'fb_graph'
+
+#gem 'coffee-filter'
+
+gem 'rabl'
+
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'therubyracer', :platform => :ruby
+
+  gem 'uglifier', '>= 1.0.3'
+  # documentation: https://github.com/seyhunak/twitter-bootstrap-rails
+  gem 'twitter-bootstrap-rails'
+end
+
+group :test do
+  gem 'shoulda'
+end
+
+gem 'simplecov', :require => false, :group => :test
+
+# adds jquery.js, jquery-ui.js and jquery-ujs to the asset path
+gem 'jquery-rails'
+
+
