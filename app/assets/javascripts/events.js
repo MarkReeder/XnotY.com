@@ -4,19 +4,41 @@
 jQuery(document).ready(function() {
 
   var $pageContent = $('#pageContent'),
-      $eventLoginTemplate = $('#eventLoginTemplate');
+      $eventLoginTemplate = $('#eventLoginTemplate'),
+      eventID = window.location.pathname.split('/events/')[1],
+      eventDetails = null;
+      $inviteTemplate = $('#invitesTemplate');
   if ($eventLoginTemplate.length) {
     $('#pageContent').html(Hogan.compile($eventLoginTemplate.html()).render());
   }
 
+  if ($inviteTemplate.length) {
+    var eventID = window.location.pathname.split('/events/')[1];
+    $.getJSON('/events/' + eventID + '/invites', function(data) {
+
+    });
+  }
+
+  $.getJSON('/events/' + eventID + '.json', function(data) {
+      eventDetails = data.event;
+      console.log('eventDetails.is_attending', eventDetails.is_attending);
+      if(eventDetails.is_attending) {
+        $('#pageContent').html(Hogan.compile($('#eventDetailsTemplate').html()).render(eventDetails));
+      } else if ($eventLoginTemplate.length) {
+        $('#pageContent').html(Hogan.compile($eventLoginTemplate.html()).render());
+      }
+  });
+  
   $(document).on('click', '.button-facebook-connect-join', function(data) {
     XnotY.Facebook.login(function(data) {
       $('#pageContent').html(Hogan.compile($('#eventPhoneNumberTemplate').html()).render(data));
     });
   });
-
+  $(document).on('submit', '#phoneNumberForm', function(event) {
+      event.preventDefault();
+      $('.button-phone-connect-join').click();
+  });
     $(document).on('click', '.button-phone-connect-join', function() {
-      var eventID = window.location.pathname.split('/events/')[1];
       var phone_number = $('#phoneNumberInput').val();
       $.ajax({
         url: '/users/' + user_data.user_id + '.json',
