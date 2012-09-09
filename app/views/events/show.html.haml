@@ -1,19 +1,30 @@
-%p#notice= notice
+%div#pageContent
+%script#eventDetailsTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
+  %p#notice= notice
 
-%p
-  %b Title:
-  = @event.title
-%p
-  %b Description:
-  = @event.description
-%p
-  %b Startrange:
-  = @event.startRange
-%p
-  %b Endrange:
-  = @event.endRange
+  %p
+    %b Title:
+    = @event.title
+  %p
+    %b Description:
+    = @event.description
+  %p
+    %b Startrange:
+    = @event.startRange
+  %p
+    %b Endrange:
+    = @event.endRange
 
-%div#locuLocations
-%div#currentLocation
+  %div#locuLocations
+  %div#currentLocation
+
+%script#eventLoginTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
+  .row
+    %a.large.button.radius.button-facebook-connect-join{:href => '#'}
+      Facebook Connect
+
+%script#invitesTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
+  %div#inviteList
+
 
 = render :partial => "shared/locu_templates"
