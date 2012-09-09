@@ -12,7 +12,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    logger.info("HERE!")
     respond_with @event
   end
 

@@ -12,7 +12,12 @@ class Event
 
   def is_user_attending?(user)
     return false if user.nil?
+    return true  if is_organizer?(user)
     invite = Invite.where(user_id: user._id, event_id: self._id).first
     !invite.nil?
+  end
+
+  def is_organizer?(user)
+    user._id == self.user_id
   end
 end
