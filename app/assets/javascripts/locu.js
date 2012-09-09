@@ -21,9 +21,12 @@
             });
             $currentLocationMap.html(currentLocationMapTemplate.render({q:currentUserLocation}));
         };
-    $('document').ready(function() {
+    $(document).ready(function() {
         var changeLocationTemplate = Hogan.compile($('#changeLocationTemplate').html());
         $currentLocationMap = $('#currentLocation');
+        $.subscribe('/geo/position/unset', function() {
+            $currentLocationMap.html(changeLocationTemplate.render());
+        });
         $('body').on('click', '#startChangeLocation', function(event) {
             event.preventDefault();
             $currentLocationMap.html(changeLocationTemplate.render());
@@ -43,14 +46,19 @@
                     XnotY.geo.position.coords = {};
                     XnotY.geo.position.coords.latitude = data.coordinates[0];
                     XnotY.geo.position.coords.longitude = data.coordinates[1];
-                    $locuLocations.html('');
+                    if($locuLocations) {
+                        $locuLocations.html('');
+                    }
                     $.publish('/geo/position/set');
                 }
             });
         });
         $('body').on('click', '#cancelSetLocation', function(event) {
             event.preventDefault();
-            $currentLocationMap.html(currentLocationMapTemplate.render({q:currentUserLocation}));
+            $('#changeLocationInput').val('');
+            if(currentLocationMapTemplate) {
+                $currentLocationMap.html(currentLocationMapTemplate.render({q:currentUserLocation}));
+            }
         });
     });
     $.subscribe('/geo/position/set', function() {

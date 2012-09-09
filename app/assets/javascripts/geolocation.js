@@ -25,6 +25,7 @@
         },
         geoError = function(error) {
             XnotY.geo.position = false;
+            $.publish('/geo/position/unset');
         };
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
