@@ -7,6 +7,8 @@ class User
   field :first_name, type: String
   field :last_name, type: String
 
+  field :cell_number
+
   has_many :events
   has_many :suggestions
   has_many :responses
