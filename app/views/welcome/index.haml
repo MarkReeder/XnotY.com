@@ -1,3 +1,9 @@
+%div#pageContent
+%div#locuLocations
+%div#currentLocation
+
+/ Templates
+
 %script#locuLocationTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
   %a{:href => "{{website_url}}", :target => "_blank"}
     {{name}}
@@ -20,9 +26,10 @@
 
 %script#createEventTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
   .row
-    %input#createEventTitle.twelve{:placeholder => "Event Title", :type => 'text'}
-    %a.large.button.radius.button-create-event{:href => '#'}
-      Create Event
+    %form#createEventForm
+      %input#createEventTitle.twelve{:placeholder => "Event Title", :type => 'text'}
+      %a.large.button.radius.button-create-event{:href => '#'}
+        Create Event
 
 %script#FacebookConnectTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
   .row
@@ -32,16 +39,5 @@
 %script#FacebookSendTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
   .row
     .fb-send{:'data-href' =>"http://example.com", :'data-font' => "lucida grande"}
-    :javascript
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=" + window.XnotY.keys.fb;
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-
-#pageContent
-
-%div#locuLocations
-%div#currentLocation
+    %script{:type => 'text/javascript'}
+      (function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=" + window.XnotY.keys.fb; fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));
