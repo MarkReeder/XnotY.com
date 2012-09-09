@@ -12,7 +12,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    # TODO auth that the user is allowed to view this event
+    logger.info("HERE!")
     respond_with @event
   end
 
