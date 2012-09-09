@@ -1,10 +1,10 @@
 jQuery(document).ready(function() {
 
-  if (!window.XY) {
-    window.XY = {};
+  if (!window.XnotY) {
+    window.XnotY = {};
   }
 
-  XY.Facebook = {
+  XnotY.Facebook = {
 
       login : function(callback) {
           var self = this;
@@ -45,7 +45,7 @@ jQuery(document).ready(function() {
 
         if (FB) {
             FB.api('/me', function(user_data) {
-                XY.fb_data = {
+                XnotY.fb_data = {
                     'email' : user_data.email,
                     'first_name' : user_data.first_name,
                     'last_name' : user_data.last_name
