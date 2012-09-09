@@ -1,6 +1,7 @@
 %div#pageContent
-%div#locuLocations
-%div#currentLocation
+%div.row
+  %div#locuLocations.seven.columns
+  %div#currentLocation.five.columns
 
 / Templates
 
@@ -8,8 +9,8 @@
 
 %script#createEventTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
   %form#createEventForm
-    %input#createEventTitle.eight.columns{:placeholder => "Event Title", :type => 'text'}
-    %a.large.button.radius.three.columns.offset-by-one.button-create-event{:href => '#'}
+    %input#createEventTitle{:placeholder => "Event Title", :type => 'text'}
+    %a.large.button.radius.button-create-event#createEventButton{:href => '#'}
       Create Event
 
 %script#FacebookConnectTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
