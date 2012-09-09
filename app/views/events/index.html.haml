@@ -4,20 +4,12 @@
   %tr
     %th Title
     %th Description
-    %th Startrange
-    %th Endrange
-    %th
-    %th
     %th
 
   - @events.each do |event|
     %tr
-      %td= event.title
+      %td= link_to event.title, event
       %td= event.description
-      %td= event.startRange
-      %td= event.endRange
-      %td= link_to 'Show', event
-      %td= link_to 'Edit', edit_event_path(event)
       %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
