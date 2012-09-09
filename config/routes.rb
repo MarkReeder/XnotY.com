@@ -1,11 +1,9 @@
 XnotY::Application.routes.draw do
+  resources :suggestions
+
   resources :users
 
   resources :events
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
 
   resource :welcome, :only => [:index]
   

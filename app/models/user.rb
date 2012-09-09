@@ -8,4 +8,5 @@ class User
   field :last_name, type: String
 
   has_many :events
+  has_many :suggestions
 end

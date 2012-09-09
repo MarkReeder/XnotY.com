@@ -7,4 +7,5 @@ class Event
   field :endRange, type: DateTime
 
   belongs_to :user
+  has_many :suggestions
 end
