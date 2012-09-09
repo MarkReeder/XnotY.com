@@ -19,8 +19,10 @@ class EventsController < ApplicationController
     if !signed_in?
       return render json: {success: false}, status: :unauthorized
     end
-
     @event = Event.find(params[:id])
+    if @event.is_user_attending?(current_user)
+      return respond_with @event
+    end
     @invite = Invite.create!
     @invite.event = @event
     @invite.invited_user = current_user
