@@ -1,6 +1,8 @@
 %script#locuLocationTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
-  %a{:href => "{{website_url}}", :target => "_blank"}
+  %a.set-event-location{:href => "", :'data-location-name' => "{{name}}"}
     {{name}}
+  %a{:href => "{{website_url}}", :target => "_blank"}
+    site
   in
   %a{:href => "{{location_url}}", :target => "_blank"}
     {{locality}}, {{region}} {{distance}}mi away

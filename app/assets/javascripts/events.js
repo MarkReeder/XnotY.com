@@ -38,6 +38,20 @@ jQuery(document).ready(function() {
       event.preventDefault();
       $('.button-phone-connect-join').click();
   });
+    $(document).on('click', '.set-event-location', function(event) {
+        var locationName = $(event.target).data('location-name');
+        event.preventDefault();
+        $.ajax({
+            url: '/events/' + eventID + '.json',
+            type: 'PUT',
+            contentType: 'json',
+            data: {
+                event: {
+                    'location' : locationName
+                }
+            }
+        })
+    });
     $(document).on('click', '.button-phone-connect-join', function() {
       var phone_number = $('#phoneNumberInput').val();
       $.ajax({
