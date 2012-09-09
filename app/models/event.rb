@@ -20,4 +20,8 @@ class Event
   def is_organizer?(user)
     user._id == self.user_id
   end
+  
+  def attendees
+    invites.map(&:user)
+  end
 end
