@@ -8,6 +8,12 @@ XnotY::Application.routes.draw do
   end
 
   resources :users
+  
+  resources :sms, only: [] do
+    collection do
+      post :record
+    end
+  end
 
   resources :events do
     member do
