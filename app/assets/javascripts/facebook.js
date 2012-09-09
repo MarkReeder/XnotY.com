@@ -33,6 +33,7 @@ jQuery(document).ready(function() {
           'code' : self.oauth_token,
           'facebook_id' : self.user_id
         }, function(data) {
+          window.user_data = data;
           if (typeof self.callback === 'function') {
             self.callback();
           }
@@ -58,7 +59,7 @@ jQuery(document).ready(function() {
       send_message_modal : function(url) {
         FB.ui({
           method: 'send',
-          name: 'People Argue Just to Win',
+          name: 'X not Y',
           link: url
         });
       }
