@@ -25,7 +25,7 @@ class FacebooksController < ApplicationController
       fb_user = FbGraph::User.me(access_token).fetch
       user = User.create!(facebook_id: facebook_id,
                           first_name: fb_user.first_name,
-                          last_name: fb_user.first_name,
+                          last_name: fb_user.last_name,
                           email: fb_user.email,
                           auth_token: access_token)
     end
