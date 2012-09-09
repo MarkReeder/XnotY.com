@@ -7,7 +7,7 @@ class SuggestionMessage
   field :has_been_sent, type: Boolean, default: false
   field :twilio_sid, type: String
   field :from_number, type: String
-  field :to_number, :type: String
+  field :to_number, type: String
   
   belongs_to :suggestion
   belongs_to :user
