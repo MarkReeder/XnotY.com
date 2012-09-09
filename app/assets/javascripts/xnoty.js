@@ -14,7 +14,9 @@ jQuery(document).ready(function() {
   $(document).on('click', '.button-create-event', function() {
     var eventTitle = $('#createEventTitle').val();
     $.post('/events.json', {
-      'title': eventTitle
+      'event' : {
+        'title': eventTitle
+      }
     }).done(function(data) {
       $('#pageContent').html(Hogan.compile($('#FacebookSendTemplate').html()).render(data));
     }).fail(function() {
