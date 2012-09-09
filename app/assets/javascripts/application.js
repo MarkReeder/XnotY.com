@@ -14,7 +14,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require tinypubsub
+//= require _tinypubsub
+//= require _lodash.min
+//= require hogan-2.0.0.min
 //= require facebook_init
 //= require facebook
 //= require geolocation
