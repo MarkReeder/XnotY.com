@@ -19,4 +19,5 @@ class User
   def easy_name
     first_name + " " +  last_name[0 ... 1]
   end
+
 end
