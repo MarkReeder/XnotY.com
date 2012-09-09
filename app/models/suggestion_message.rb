@@ -10,7 +10,7 @@ class SuggestionMessage
   belongs_to :user
   
 
-  def self.send(user, suggestion)
+  def self.send_message(user, suggestion)
     message = self.create(user: user, suggestion: suggestion, sent_at: Time.now)
     response = 
       TwilioClient.get_client.account.sms.messages.

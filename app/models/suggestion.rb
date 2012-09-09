@@ -12,8 +12,8 @@ class Suggestion
   has_many :suggestion_messages
 
   def notify_all
-    (this.invites.map(&:invited_user) + [this.user]).map do |user|
-      message = SuggestionMessage.send(user, this)
+    (invites.map(&:invited_user) + [user]).map do |user|
+      message = SuggestionMessage.send_message(user, self)
     end
   end
 end
