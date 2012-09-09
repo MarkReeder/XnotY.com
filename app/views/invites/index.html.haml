@@ -1,0 +1,17 @@
+%h1 Listing invites
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @invites.each do |invite|
+    %tr
+      %td= link_to 'Show', invite
+      %td= link_to 'Edit', edit_invite_path(invite)
+      %td= link_to 'Destroy', invite, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Invite', new_invite_path

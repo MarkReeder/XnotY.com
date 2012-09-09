@@ -10,4 +10,6 @@ class User
   has_many :events
   has_many :suggestions
   has_many :votes
+  
+  has_many :invites, inverse_of: :invited_user
 end

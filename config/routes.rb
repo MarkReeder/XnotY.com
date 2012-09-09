@@ -1,4 +1,6 @@
 XnotY::Application.routes.draw do
+  resources :invites
+
   resources :responses
 
   resources :suggestions
