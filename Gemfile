@@ -24,6 +24,8 @@ gem 'fb_graph'
 
 gem 'rabl'
 
+gem 'twilio-ruby'
+
 gem 'geocoder', :git => "git://github.com/alexreisner/geocoder.git"
 
 group :assets do
