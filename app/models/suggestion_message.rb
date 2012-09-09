@@ -22,8 +22,8 @@ class SuggestionMessage
   end
 
   def self.does_user_have_messages_outstanding(user)
-    num_outstanding = where(user: user, to_number: user.cell_number,
-                            has_been_sent: true, has_responded: false).count
+    num_outstanding = SuggestionMessage.where(user_id: user._id, to_number: user.cell_number,
+                                              has_been_sent: true, has_responded: false).count
     num_outstanding > 0
   end
 
