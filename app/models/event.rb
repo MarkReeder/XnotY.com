@@ -5,6 +5,7 @@ class Event
   field :description, type: String
   field :startRange, type: DateTime
   field :endRange, type: DateTime
+  field :location, type: String
 
   belongs_to :user
   has_many :suggestions
