@@ -13,6 +13,12 @@ XnotY::Application.routes.draw do
     resources :invites
     resources :suggestions
   end
+  
+  resources :geocode, :only => [] do
+    collection do
+      get :resolve
+    end
+  end
 
   resource :welcome, :only => [:index]
 
