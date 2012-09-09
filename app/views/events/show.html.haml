@@ -13,6 +13,7 @@
   %b Endrange:
   = @event.endRange
 
-= link_to 'Edit', edit_event_path(@event)
-\|
-= link_to 'Back', events_path
+%div#locuLocations
+%div#currentLocation
+
+= render :partial => "shared/locu_templates"

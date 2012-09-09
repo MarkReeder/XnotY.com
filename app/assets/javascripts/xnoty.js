@@ -1,6 +1,10 @@
 jQuery(document).ready(function() {
 
-  $('#pageContent').html(Hogan.compile($('#createEventTemplate').html()).render());
+  var $pageContent = $('#pageContent'),
+      $createEventTemplate = $('#createEventTemplate');
+  if ($createEventTemplate.length) {
+    $('#pageContent').html(Hogan.compile($createEventTemplate.html()).render());
+  }
 
   $(document).on('submit', '#createEventForm', function(event) {
       event.preventDefault();

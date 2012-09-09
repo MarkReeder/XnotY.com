@@ -14,12 +14,14 @@
  */
 
 #pageContainer {
+  min-width: 700px;
   padding: 0 15px 15px 15px;
   background-color: rgba(255,255,255,0.35);
   -webkit-border-radius: 5px;
           border-radius: 5px;
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-
 }
-
+.sidebar { min-width: 140px; }
 h1.logo { text-indent: -9999em; overflow: hidden; width: 113px; height: 226px; background-image: url('/assets/logo.png'); margin-top: 16px; }
+#createEventTitle { float: left; height: 50px; width: 78%; padding: 0 10px; font-size: 24px; }
+#createEventButton { float: right; width: 22%; border-top-left-radius: 0; border-bottom-left-radius: 0; padding-left: 10px; padding-right: 10px; }
