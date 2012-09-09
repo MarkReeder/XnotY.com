@@ -22,9 +22,6 @@
         %img{:src => 'https://graph.facebook.com/' + attendee.facebook_id + '/picture?type=small'}
         = attendee.easy_name
 
-  %div#locuLocations
-  %div#currentLocation
-
   .row
     %a.button.radius.button-facebook-send{:href => '#', :'data-fb-send-url' => 'events/' + @event._id.to_s}
       Invite your Facebook friends
@@ -43,6 +40,9 @@
 
 %script#invitesTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
   %div#inviteList
+
+%div#locuLocations.seven.columns
+%div#currentLocation.five.columns
 
 %div.fb-comments{:'data-href' => "http://www.xnoty.com/events/#{@event._id}", :'data-num-posts' => "5", :'data-width' => "470"}
 

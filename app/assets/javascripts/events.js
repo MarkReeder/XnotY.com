@@ -21,7 +21,6 @@ jQuery(document).ready(function() {
 
   $.getJSON('/events/' + eventID + '.json', function(data) {
       eventDetails = data.event;
-      console.log('eventDetails.is_attending', eventDetails.is_attending);
       if(eventDetails.is_attending) {
         $('#pageContent').html(Hogan.compile($('#eventDetailsTemplate').html()).render(eventDetails));
       } else if ($eventLoginTemplate.length) {
