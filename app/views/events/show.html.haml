@@ -26,5 +26,6 @@
 %script#invitesTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
   %div#inviteList
 
+%div.fb-comments{:'data-href' => "http://www.xnoty.com/events/#{@event._id}", :'data-num-posts' => "5", :'data-width' => "470"}
 
 = render :partial => "shared/locu_templates"
