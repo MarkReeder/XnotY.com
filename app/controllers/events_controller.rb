@@ -2,28 +2,19 @@ class EventsController < ApplicationController
 
   respond_to :html, :json
   def index
-    @events = Event.all
+    if !signed_in?
+      return render json: {success: false}, status: :unauthorized
+    end 
+    @events = Event.where(user: current_user).all
     respond_with @events
   end
 
-  # GET /events/1
-  # GET /events/1.json
   def show
     @event = Event.find(params[:id])
+    # TODO auth that the user is allowed to view this event
     respond_with @event
   end
 
-  # GET /events/new
-  # GET /events/new.json
-  def new
-    @event = Event.new
-    respond_with @event
-  end
-
-  # GET /events/1/edit
-  def edit
-    @event = Event.find(params[:id])
-  end
 
   def create
     # if user not logged in then return 401
@@ -44,8 +35,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # PUT /events/1
-  # PUT /events/1.json
   def update
     @event = Event.find(params[:id])
 
