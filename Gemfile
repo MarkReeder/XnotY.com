@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # ruby '1.9.3'
-gem 'rails', '3.2.8' 
+gem 'rails', '3.2.8'
 
 gem "mongoid", "~> 3.0.0"
 
@@ -13,7 +13,7 @@ gem 'haml-rails'
 
 gem 'andand'
 
-# the rails webserver. Using this rather than passenger or others because Heroku suggests it 
+# the rails webserver. Using this rather than passenger or others because Heroku suggests it
 # (and presumably it's what they best support).
 gem 'thin'
 
@@ -34,6 +34,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   # documentation: https://github.com/seyhunak/twitter-bootstrap-rails
   gem 'twitter-bootstrap-rails'
+
+  # http://foundation.zurb.com/docs/
+  gem 'compass-rails', '~> 1.0.3'
+  gem 'zurb-foundation', '~> 3.0.9'
 end
 
 group :test do
