@@ -9,7 +9,7 @@ module Authentication
       def require_authentication
         authenticate current_user
       rescue Unauthorized => e
-        redirect_to root_url and return false
+        # redirect_to root_url and return false
       end
       
       def authenticate(user)
