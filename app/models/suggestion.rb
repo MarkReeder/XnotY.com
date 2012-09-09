@@ -12,7 +12,10 @@ class Suggestion
   has_many :suggestion_messages
 
   def notify_all
-    (event.invites.map(&:invited_user) + [event.user]).compact.map do |user|
+    users = event.invites.map(&:invited_user) + [event.user]
+    # don't send to the suggestion creator
+    users = users.reject{|u| u._id == self.user._id}.compact
+    users.map do |user|
       message = SuggestionMessage.send_message(user, self)
     end
   end
