@@ -3,7 +3,7 @@ class SuggestionMessage
   include Mongoid::Timestamps
   
   field :sent_at, type: DateTime
-  field :has_responded, type: Boolean, default: False
+  field :has_responded, type: Boolean, default: false
   field :twilio_sid, type: String
   
   belongs_to :suggestion
