@@ -10,7 +10,17 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//= require _xnoty
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require _tinypubsub
+//= require _lodash.min
+//= require hogan-2.0.0.min
+//= require facebook_init
+//= require facebook
+//= require geolocation
+//= require xnoty
 //= require_tree .
+
+
