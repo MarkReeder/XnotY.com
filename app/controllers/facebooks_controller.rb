@@ -33,7 +33,7 @@ class FacebooksController < ApplicationController
     authenticate user
 
     render( json: {success: true, name: user.first_name, 
-              redirect_to: '/'
+              redirect_to: '/',
               status: :created)
   end
 
