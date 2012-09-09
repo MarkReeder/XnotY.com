@@ -19,7 +19,7 @@ class Event
   end
 
   def is_organizer?(user)
-    user._id == self.user_id
+    user.andand._id == self.user_id
   end
 
   def attendees
