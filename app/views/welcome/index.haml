@@ -38,4 +38,5 @@
 
 %script#FacebookSendTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
   .row
-    .fb-send{:'data-href' => "events/{{event._id}}", :'data-font' => "lucida grande"}
+    %a.button.radius.button-facebook-send{:href => '#', :'data-fb-send-url' => 'events/{{event._id}}'}
+      Send a Facebook Message

@@ -14,13 +14,6 @@ jQuery(document).ready(function() {
     }).done(function(data) {
       $('#pageContent').html(Hogan.compile($('#FacebookSendTemplate').html()).render(data));
 
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return; js = d.createElement(s);
-        js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=" + window.XnotY.keys.fb;
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-
     }).fail(function() {
       $('#pageContent').html(Hogan.compile($('#FacebookConnectTemplate').html()).render());
     });
@@ -30,6 +23,11 @@ jQuery(document).ready(function() {
     XnotY.Facebook.login(function() {
      $('#pageContent').html(Hogan.compile($('#FacebookSendTemplate').html()).render(data.event));
     });
+  });
+
+  $(document).on('click', '.button-facebook-send', function() {
+    var url = window.location.origin + '/' + $(this).attr('data-fb-send-url');
+    XnotY.Facebook.send_message_modal(url);
   });
 
 });

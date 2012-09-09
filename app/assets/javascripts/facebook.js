@@ -53,6 +53,14 @@ jQuery(document).ready(function() {
                 $.publish('facebook_connected');
             });
         }
+      },
+
+      send_message_modal : function(url) {
+        FB.ui({
+          method: 'send',
+          name: 'People Argue Just to Win',
+          link: url
+        });
       }
 
   };
