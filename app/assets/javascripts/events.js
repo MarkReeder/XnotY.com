@@ -14,7 +14,10 @@ jQuery(document).ready(function() {
       $('#pageContent').html(Hogan.compile($('#eventPhoneNumberTemplate').html()).render(data));
     });
   });
-
+  $(document).on('submit', '#phoneNumberForm', function(event) {
+      event.preventDefault();
+      $('.button-phone-connect-join').click();
+  });
     $(document).on('click', '.button-phone-connect-join', function() {
       var eventID = window.location.pathname.split('/events/')[1];
       var phone_number = $('#phoneNumberInput').val();
