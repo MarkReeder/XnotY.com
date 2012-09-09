@@ -9,7 +9,7 @@ class GeocodeController < ApplicationController
     end
     result = results.first
 
-    return render(json: {coordinates: result.coordinates, address: result.formatted_address}, status: :success)
+    return render(json: {coordinates: result.coordinates, address: result.formatted_address}, status_code: 200)
   end
   
 end
