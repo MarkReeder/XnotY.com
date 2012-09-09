@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     authenticated?
-    if @current_user.nil?
-      redirect_to root_url
-    end
+    # if @current_user.nil?
+    # redirect_to root_url
+    # end
   end
 
 end
