@@ -13,7 +13,6 @@ jQuery(document).ready(function() {
       'title': eventTitle
     }).done(function(data) {
       $('#pageContent').html(Hogan.compile($('#FacebookSendTemplate').html()).render(data));
-
     }).fail(function() {
       $('#pageContent').html(Hogan.compile($('#FacebookConnectTemplate').html()).render());
     });
@@ -21,7 +20,7 @@ jQuery(document).ready(function() {
 
   $(document).on('click', '.button-facebook-connect', function() {
     XnotY.Facebook.login(function() {
-     $('#pageContent').html(Hogan.compile($('#FacebookSendTemplate').html()).render(data.event));
+     $('#pageContent').html(Hogan.compile($('#FacebookSendTemplate').html()).render(data));
     });
   });
 
