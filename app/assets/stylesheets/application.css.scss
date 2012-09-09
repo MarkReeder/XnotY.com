@@ -13,7 +13,8 @@
  *= require_tree .
  */
 
-
 #pageContainer {
   padding: 0 15px;
 }
+
+h1.logo { text-indent: -9999em; overflow: hidden; width: 113px; height: 226px; background-image: url('/assets/logo.png'); margin-top: 16px; }
