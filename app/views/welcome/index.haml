@@ -1,3 +1,11 @@
+%script#locuLocationTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
+  %a{:href => "{{website_url}}", :target => "_blank"}
+    {{name}}
+  in
+  %a{:href => "{{location_url}}", :target => "_blank"}
+    {{locality}}, {{region}} {{distance}}mi away
+  %br/
+
 .row
   %input.twelve{:placeholder => "Event Title", :type => 'text'}
   %a.large.button.radius{:href => '#'}
@@ -5,3 +13,5 @@
 .row
   %a.large.button.radius.button-facebook-connect{:href => '#'}
     Facebook Connect
+
+%div#locuLocations
