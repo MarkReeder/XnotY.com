@@ -10,14 +10,16 @@ jQuery(document).ready(function() {
   }
 
   $(document).on('click', '.button-facebook-connect-join', function(data) {
-    $('#pageContent').html(Hogan.compile($('#eventPhoneNumberTemplate').html()).render(data));
+    XnotY.Facebook.login(function(data) {
+      $('#pageContent').html(Hogan.compile($('#eventPhoneNumberTemplate').html()).render(data));
+    });
   });
 
     $(document).on('click', '.button-phone-connect-join', function() {
       var eventID = window.location.pathname.split('/events/')[1];
       var phone_number = $('#phoneNumberInput').val();
       $.ajax({
-        url: 'users/' + user_data.user_id + '.json',
+        url: '/users/' + user_data.user_id + '.json',
         type: 'PUT',
         contentType: 'json',
         data: {
