@@ -8,12 +8,19 @@
   %p
     %b Description:
     = @event.description
+
   %p
-    %b Startrange:
-    = @event.startRange
+    %b Organizer:
+    .organizer
+      %img{:src => 'https://graph.facebook.com/' + @event.user.facebook_id + '/picture?type=small'}
+      = @event.user.easy_name
+
   %p
-    %b Endrange:
-    = @event.endRange
+    %b Attendees:
+    - @event.attendees.each do |attendee|
+      .attendee
+        %img{:src => 'https://graph.facebook.com/' + attendee.facebook_id + '/picture?type=small'}
+        = attendee.easy_name
 
   %div#locuLocations
   %div#currentLocation

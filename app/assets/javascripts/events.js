@@ -4,9 +4,17 @@
 jQuery(document).ready(function() {
 
   var $pageContent = $('#pageContent'),
-      $eventLoginTemplate = $('#eventLoginTemplate');
+      $eventLoginTemplate = $('#eventLoginTemplate'),
+      $inviteTemplate = $('#invitesTemplate');
   if ($eventLoginTemplate.length) {
     $('#pageContent').html(Hogan.compile($eventLoginTemplate.html()).render());
+  }
+
+  if ($inviteTemplate.length) {
+    var eventID = window.location.pathname.split('/events/')[1];
+    $.getJSON('/events/' + eventID + '/invites', function(data) {
+
+    });
   }
 
   $(document).on('click', '.button-facebook-connect-join', function(data) {
