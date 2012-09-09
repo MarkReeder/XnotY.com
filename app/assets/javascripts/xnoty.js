@@ -3,7 +3,7 @@ jQuery(document).ready(function() {
   $(document).on('click', '.button-create-event', function() {
     var eventTitle = $('#createEventTitle').val();
 
-    $.post('/events', {
+    $.post('/events.json', {
       'title': eventTitle
     }, function() {
 
