@@ -14,8 +14,9 @@ jQuery(document).ready(function() {
               FB.login(function(response) {
                   self.status = response.status;
                   self.oauth_token = response.authResponse.accessToken;
+                  self.user_id = response.authResponse.userID;
                   if (self.status === 'connected') {
-                    self.fetch_user_data(self.callback);
+                    self.post_user_data(self.callback);
                   } else {
                       console.log('facebook auth fail');
                   }
@@ -23,6 +24,19 @@ jQuery(document).ready(function() {
                   scope: 'email,publish_actions'
               });
           }
+      },
+
+      post_user_data : function(callback) {
+        var self = this;
+        $.post('/facebook',
+        {
+          'code' : self.oauth_token,
+          'facebook_id' : self.user_id
+        }, function(data) {
+          if (typeof self.callback === 'function') {
+            self.callback();
+          }
+        });
       },
 
       fetch_user_data : function(callback) {
@@ -36,7 +50,7 @@ jQuery(document).ready(function() {
                     'first_name' : user_data.first_name,
                     'last_name' : user_data.last_name
                 };
-                $.publish('facebook_connect');
+                $.publish('facebook_connected');
             });
         }
       }
