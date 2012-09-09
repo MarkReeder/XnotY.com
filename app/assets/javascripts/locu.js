@@ -2,11 +2,12 @@
     var baseUrl = 'http://api.locu.com/v1_0/',
         venueSearchPath = 'venue/search/',
         $currentLocationMap = null,
+        $locuLocations = null,
         currentUserLocation = null,
         currentLocationMapTemplate = null,
         processLocuResults = function(data) {
-            var locuLocationTemplate = Hogan.compile($('#locuLocationTemplate').html()),
-                $locuLocations = $('#locuLocations');
+            var locuLocationTemplate = Hogan.compile($('#locuLocationTemplate').html());
+            $locuLocations = $('#locuLocations');
             currentLocationMapTemplate = Hogan.compile($('#currentLocationMapTemplate').html());
             currentUserLocation = encodeURIComponent(XnotY.geo.position.coords.latitude + ',' + XnotY.geo.position.coords.longitude);
             _.forEach(data.objects, function(object) {
@@ -34,7 +35,12 @@
                 url: '/geocode/resolve',
                 data: {q: locationQuery},
                 success: function(data) {
-                    console.log('data', data);
+                    XnotY.geo.position = {};
+                    XnotY.geo.position.coords = {};
+                    XnotY.geo.position.coords.latitude = data.coordinates[0];
+                    XnotY.geo.position.coords.longitude = data.coordinates[1];
+                    $locuLocations.html('');
+                    $.publish('/geo/position/set');
                 }
             });
         });
