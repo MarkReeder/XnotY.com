@@ -22,6 +22,6 @@ class Event
   end
   
   def attendees
-    invites.map(&:user)
+    invites.map(&:invited_user)
   end
 end
