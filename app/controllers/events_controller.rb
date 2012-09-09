@@ -15,6 +15,19 @@ class EventsController < ApplicationController
     respond_with @event
   end
 
+  def join
+    if !signed_in?
+      return render json: {success: false}, status: :unauthorized
+    end
+
+    @event = Event.find(params[:id])
+    @invite = Invite.create!
+    @invite.event = @event
+    @invite.invited_user = current_user
+    @invite.save
+
+    respond_with @event
+  end
 
   def create
     # if user not logged in then return 401

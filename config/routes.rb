@@ -10,10 +10,14 @@ XnotY::Application.routes.draw do
   resources :users
 
   resources :events do
+    member do
+      post :join
+    end
+
     resources :invites
     resources :suggestions
   end
-  
+
   resources :geocode, :only => [] do
     collection do
       get :resolve
