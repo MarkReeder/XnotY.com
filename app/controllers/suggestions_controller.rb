@@ -1,46 +1,21 @@
 class SuggestionsController < ApplicationController
-  # GET /suggestions
-  # GET /suggestions.json
-  def index
-    @suggestions = Suggestion.all
+  respond_to :json, :html
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @suggestions }
-    end
+  def index
+    @event = Event.find(params[:event_id])
+    @suggestions = Suggestion.where(event: @event).all
+    respond_with @suggestions
   end
 
-  # GET /suggestions/1
-  # GET /suggestions/1.json
   def show
     @suggestion = Suggestion.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @suggestion }
-    end
+    respond_with @suggestion
   end
 
-  # GET /suggestions/new
-  # GET /suggestions/new.json
-  def new
-    @suggestion = Suggestion.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @suggestion }
-    end
-  end
-
-  # GET /suggestions/1/edit
-  def edit
-    @suggestion = Suggestion.find(params[:id])
-  end
-
-  # POST /suggestions
-  # POST /suggestions.json
   def create
+    @event = Event.find(params[:event_id])
     @suggestion = Suggestion.new(params[:suggestion])
+    @suggestion.event = @event
 
     respond_to do |format|
       if @suggestion.save
@@ -53,10 +28,9 @@ class SuggestionsController < ApplicationController
     end
   end
 
-  # PUT /suggestions/1
-  # PUT /suggestions/1.json
   def update
     @suggestion = Suggestion.find(params[:id])
+    # TODO check that the suggestion belongs to this user
 
     respond_to do |format|
       if @suggestion.update_attributes(params[:suggestion])
@@ -69,8 +43,6 @@ class SuggestionsController < ApplicationController
     end
   end
 
-  # DELETE /suggestions/1
-  # DELETE /suggestions/1.json
   def destroy
     @suggestion = Suggestion.find(params[:id])
     @suggestion.destroy

@@ -1,47 +1,22 @@
 class InvitesController < ApplicationController
-  # GET /invites
-  # GET /invites.json
-  def index
-    @invites = Invite.all
+  respond_to :json, :html
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @invites }
-    end
+  def index
+    @event = Event.find(params[:event_id])
+    @invites = Invite.where(event: @event).all
+
+    respond_with @invites
   end
 
-  # GET /invites/1
-  # GET /invites/1.json
   def show
     @invite = Invite.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @invite }
-    end
+    respond_with @invite
   end
 
-  # GET /invites/new
-  # GET /invites/new.json
-  def new
-    @invite = Invite.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @invite }
-    end
-  end
-
-  # GET /invites/1/edit
-  def edit
-    @invite = Invite.find(params[:id])
-  end
-
-  # POST /invites
-  # POST /invites.json
   def create
+    @event = Event.find(params[:event_id])
     @invite = Invite.new(params[:invite])
-
+    @invite.event = @event
     respond_to do |format|
       if @invite.save
         format.html { redirect_to @invite, notice: 'Invite was successfully created.' }
@@ -53,10 +28,9 @@ class InvitesController < ApplicationController
     end
   end
 
-  # PUT /invites/1
-  # PUT /invites/1.json
   def update
     @invite = Invite.find(params[:id])
+    # TODO check that the invite belongs to this user
 
     respond_to do |format|
       if @invite.update_attributes(params[:invite])
@@ -69,8 +43,6 @@ class InvitesController < ApplicationController
     end
   end
 
-  # DELETE /invites/1
-  # DELETE /invites/1.json
   def destroy
     @invite = Invite.find(params[:id])
     @invite.destroy

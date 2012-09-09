@@ -1,13 +1,18 @@
 XnotY::Application.routes.draw do
-  resources :invites
+  resources :invites, :only => [:destroy, :show]
 
   resources :responses
 
-  resources :suggestions
+  resources :suggestions do
+    resources :responses
+  end
 
   resources :users
 
-  resources :events
+  resources :events do
+    resources :invites
+    resources :suggestions
+  end
 
   resource :welcome, :only => [:index]
 

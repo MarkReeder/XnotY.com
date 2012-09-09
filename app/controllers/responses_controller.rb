@@ -1,46 +1,22 @@
 class ResponsesController < ApplicationController
-  # GET /responses
-  # GET /responses.json
-  def index
-    @responses = Response.all
+  respond_to :json, :html
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @responses }
-    end
+  def index
+    @suggestion = Suggestion.find(params[:suggestion_id])
+    @responses = Response.where(suggestion: @suggestion).all
+
+    respond_with @responses
   end
 
-  # GET /responses/1
-  # GET /responses/1.json
   def show
     @response = Response.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @response }
-    end
+    respond_with @response
   end
 
-  # GET /responses/new
-  # GET /responses/new.json
-  def new
-    @response = Response.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @response }
-    end
-  end
-
-  # GET /responses/1/edit
-  def edit
-    @response = Response.find(params[:id])
-  end
-
-  # POST /responses
-  # POST /responses.json
   def create
+    @suggestion = Suggestion.find(params[:suggestion_id])
     @response = Response.new(params[:response])
+    @response.suggestion = @suggestion
 
     respond_to do |format|
       if @response.save
@@ -53,8 +29,6 @@ class ResponsesController < ApplicationController
     end
   end
 
-  # PUT /responses/1
-  # PUT /responses/1.json
   def update
     @response = Response.find(params[:id])
 
@@ -69,8 +43,6 @@ class ResponsesController < ApplicationController
     end
   end
 
-  # DELETE /responses/1
-  # DELETE /responses/1.json
   def destroy
     @response = Response.find(params[:id])
     @response.destroy
