@@ -20,9 +20,10 @@
 
 %script#createEventTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
   .row
-    %input#createEventTitle.twelve{:placeholder => "Event Title", :type => 'text'}
-    %a.large.button.radius.button-create-event{:href => '#'}
-      Create Event
+    %form#createEventForm
+      %input#createEventTitle.twelve{:placeholder => "Event Title", :type => 'text'}
+      %a.large.button.radius.button-create-event{:href => '#'}
+        Create Event
 
 %script#FacebookConnectTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
   .row

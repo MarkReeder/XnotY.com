@@ -28,6 +28,10 @@
             event.preventDefault();
             $currentLocationMap.html(changeLocationTemplate.render());
         });
+        $('body').on('submit', '#changeLocation', function(event) {
+            event.preventDefault();
+            $('#setLocation').click();
+        });
         $('body').on('click', '#setLocation', function(event) {
             var locationQuery = $('#changeLocationInput').val();
             event.preventDefault();
