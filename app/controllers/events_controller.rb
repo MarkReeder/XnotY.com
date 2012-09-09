@@ -25,10 +25,13 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  # POST /events
-  # POST /events.json
   def create
+    # if user not logged in then return 401
+    if !signed_in?
+      return render json: {success: false}, status: :unauthorized
+    end
     @event = Event.new(params[:event])
+    @event.user = current_user
 
     respond_to do |format|
       if @event.save
