@@ -18,15 +18,15 @@ jQuery(document).ready(function() {
         'title': eventTitle
       }
     }).done(function(data) {
-      $('#pageContent').html(Hogan.compile($('#FacebookSendTemplate').html()).render(data));
+      $('#pageContent').html(Hogan.compile($('#facebookSendTemplate').html()).render(data));
     }).fail(function() {
-      $('#pageContent').html(Hogan.compile($('#FacebookConnectTemplate').html()).render());
+      $('#pageContent').html(Hogan.compile($('#facebookConnectTemplate').html()).render());
     });
   });
 
   $(document).on('click', '.button-facebook-connect', function() {
     XnotY.Facebook.login(function(data) {
-     $('#pageContent').html(Hogan.compile($('#FacebookSendTemplate').html()).render(data));
+      $('#pageContent').html(Hogan.compile($('#phoneNumberTemplate').html()).render(data));
     });
   });
 
@@ -34,5 +34,23 @@ jQuery(document).ready(function() {
     var url = window.location.origin + '/' + $(this).attr('data-fb-send-url');
     XnotY.Facebook.send_message_modal(url);
   });
+
+  $(document).on('click', '.button-phone-connect', function() {
+    var phone_number = $('#phoneNumberInput').val();
+    $.ajax({
+      url: 'users/' + user_data.user_id + '.json',
+      type: 'PUT',
+      contentType: 'json',
+      data: {
+        user: {
+          'cell_number' : phone_number
+        }
+      }
+    }).done(function(data) {
+      $('#pageContent').html(Hogan.compile($('#facebookSendTemplate').html()).render(data));
+    });
+  });
+
+
 
 });

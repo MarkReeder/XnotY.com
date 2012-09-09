@@ -18,13 +18,25 @@
   %div#locuLocations
   %div#currentLocation
 
+  .row
+    %a.button.radius.button-facebook-send{:href => '#', :'data-fb-send-url' => 'events/' + @event._id.to_s}
+      Send a Facebook Message
+
 %script#eventLoginTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
   .row
     %a.large.button.radius.button-facebook-connect-join{:href => '#'}
-      Facebook Connect
+      Join Event with Facebook Connect
+
+%script#eventPhoneNumberTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
+  .row
+    %form#phoneNumberForm
+      %input#phoneNumberInput{:type => 'text', :placeholder => "Enter Phone Number"}
+      %a.large.button.radius.button-phone-connect-join{:href => '#'}
+        Submit
 
 %script#invitesTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
   %div#inviteList
 
+%div.fb-comments{:'data-href' => "http://www.xnoty.com/events/#{@event._id}", :'data-num-posts' => "5", :'data-width' => "470"}
 
 = render :partial => "shared/locu_templates"

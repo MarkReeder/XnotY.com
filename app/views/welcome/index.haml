@@ -13,12 +13,19 @@
     %a.large.button.radius.button-create-event#createEventButton{:href => '#'}
       Create Event
 
-%script#FacebookConnectTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
+%script#facebookConnectTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
   .row
     %a.large.button.radius.button-facebook-connect{:href => '#'}
       Facebook Connect
 
-%script#FacebookSendTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
+%script#phoneNumberTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
+  .row
+    %form#phoneNumberForm
+      %input#phoneNumberInput{:type => 'text', :placeholder => 'Enter Phone Number'}
+      %a.large.button.radius.button-phone-connect{:href => '#'}
+        Submit
+
+%script#facebookSendTemplate{:charset => "utf-8", :type => "text/x-mustache-template"}
   .row
     %span.twelve
       %a{:href => 'events/{{event._id}}'} Check out your Event

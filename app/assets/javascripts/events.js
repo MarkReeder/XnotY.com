@@ -9,13 +9,30 @@ jQuery(document).ready(function() {
     $('#pageContent').html(Hogan.compile($eventLoginTemplate.html()).render());
   }
 
-  $(document).on('click', '.button-facebook-connect-join', function() {
+  $(document).on('click', '.button-facebook-connect-join', function(data) {
     XnotY.Facebook.login(function(data) {
-      var eventID = window.location.pathname.split('/events/')[1];
-      $.post('/events/' + eventID + '/join').done(function() {
-        $('#pageContent').html(Hogan.compile($('#eventDetailsTemplate').html()).render(data));
-      });
+      $('#pageContent').html(Hogan.compile($('#eventPhoneNumberTemplate').html()).render(data));
     });
   });
+
+    $(document).on('click', '.button-phone-connect-join', function() {
+      var eventID = window.location.pathname.split('/events/')[1];
+      var phone_number = $('#phoneNumberInput').val();
+      $.ajax({
+        url: '/users/' + user_data.user_id + '.json',
+        type: 'PUT',
+        contentType: 'json',
+        data: {
+          user: {
+            'cell_number' : phone_number
+          }
+        }
+      }).done(function(data) {
+        $.post('/events/' + eventID + '/join').done(function(data) {
+          $('#pageContent').html(Hogan.compile($('#eventDetailsTemplate').html()).render(data));
+        });
+      });
+
+    });
 
 });
