@@ -6,6 +6,8 @@ gem 'rails', '3.2.8'
 
 gem "mongoid", "~> 3.0.0"
 
+gem "locu", git: "git@github.com:acechase/locu-ruby.git"
+
 # http://haml-lang.com/
 gem 'haml'
 gem 'haml-rails'
