@@ -6,6 +6,7 @@ class EventsController < ApplicationController
       return render json: {success: false}, status: :unauthorized
     end 
     @events = Event.where(user: current_user).all
+    @events += Invite.where(invited_user: current_user).all.map(&:event)
     respond_with @events
   end
 
