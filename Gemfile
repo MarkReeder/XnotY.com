@@ -24,6 +24,8 @@ gem 'fb_graph'
 
 gem 'rabl'
 
+gem 'geocoder', :git => "git://github.com/alexreisner/geocoder.git"
+
 group :assets do
   gem 'sass-rails'
   # gem 'coffee-rails'
