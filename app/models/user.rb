@@ -9,4 +9,5 @@ class User
 
   has_many :events
   has_many :suggestions
+  has_many :votes
 end

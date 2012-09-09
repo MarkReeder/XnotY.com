@@ -3,5 +3,6 @@ class Suggestion
   include Mongoid::Timestamps
   field :description, type: String
   
+  has_many :responses
   belongs_to :user
 end
